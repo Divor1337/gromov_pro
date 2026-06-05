@@ -1,543 +1,625 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#fafafb" />
-  <title>Принципы денег</title>
-  <meta name="description" content="Почему к одним людям деньги приходят легко и стабильно, а другие годами качаются на качелях, когда деньги то есть, то нет?" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Выбор игры</title>
+  <meta name="description" content="Выберите популярную игру и начните прямо сейчас." />
 
   <style>
-    :root{
-      --bg:#fafafb;
-      --bg2:#f3f4f8;
-      --card:#ffffff;
-      --text:#101114;
-      --muted: rgba(16,17,20,.72);
-      --line: rgba(16,17,20,.10);
-
-      --accent:#fcd802; /* как в Тильде-кнопке */
-      --accent2:#111827;
-      --shadow: 0 18px 60px rgba(16,17,20,.10);
-      --r: 20px;
-
-      --container: 860px;
+    :root {
+      --bg: #070914;
+      --card: rgba(16, 22, 42, 0.86);
+      --card-2: rgba(19, 27, 52, 0.94);
+      --stroke: rgba(255, 255, 255, 0.11);
+      --stroke-strong: rgba(255, 255, 255, 0.18);
+      --text: #ffffff;
+      --muted: rgba(255, 255, 255, 0.68);
+      --soft: rgba(255, 255, 255, 0.46);
+      --green: #52ff9a;
+      --red: #ff3f64;
+      --yellow: #ffd15a;
+      --blue: #6ea8ff;
+      --purple: #b06cff;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      --radius: 26px;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(900px 520px at 12% 8%, rgba(252,216,2,.18), transparent 58%),
-        radial-gradient(900px 520px at 88% 18%, rgba(17,24,39,.08), transparent 60%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
-      overflow-x:hidden;
-    }
-
-    .wrap{
-      min-height:100%;
-      display:flex;
-      justify-content:center;
-      padding: 28px 16px 110px;
-    }
-
-    .page{
-      width:min(var(--container), 96vw);
-    }
-
-    .top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-bottom: 18px;
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.70);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      font-size: 12px;
-      color: rgba(16,17,20,.75);
-      font-weight: 800;
-      letter-spacing:.2px;
-      box-shadow: 0 10px 30px rgba(16,17,20,.06);
-    }
-    .dot{
-      width:10px;height:10px;border-radius:999px;
-      background: linear-gradient(90deg, var(--accent), #ffd84a);
-      box-shadow: 0 0 0 6px rgba(252,216,2,.18);
-    }
-
-    .card{
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--r);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-
-    .hero{
-      padding: 22px 18px 16px;
-      position:relative;
-    }
-
-    .hero:before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(520px 280px at 14% 0%, rgba(252,216,2,.18), transparent 60%),
-        radial-gradient(520px 280px at 92% 12%, rgba(17,24,39,.08), transparent 62%);
-      pointer-events:none;
-    }
-
-    .heroInner{
-      position:relative;
-      z-index:1;
-    }
-
-    h1{
-      margin:0 0 10px;
-      font-size: clamp(30px, 4vw, 44px);
-      line-height: 1.06;
-      letter-spacing:-.7px;
-      font-weight: 1000;
-    }
-
-    .lead{
-      margin:0;
-      font-size: 16px;
-      line-height: 1.55;
-      color: var(--muted);
-      max-width: 70ch;
-    }
-
-    .divider{
-      height:1px;
-      background: var(--line);
-      margin: 0;
-    }
-
-    .content{
-      padding: 18px;
-    }
-
-    .block{
-      padding: 16px;
-      border-radius: 18px;
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(252,216,2,.14), rgba(252,216,2,.05));
-      margin: 14px 0 18px;
-    }
-
-    .block b{font-weight: 950;}
-    .block p{
-      margin:0;
-      line-height:1.6;
-      color: rgba(16,17,20,.86);
-      font-size: 15px;
-    }
-
-    .list{
-      margin: 12px 0 0;
-      padding: 0;
-      list-style:none;
-      display:grid;
-      gap:10px;
-    }
-    .li{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      padding: 12px 12px;
-      border-radius: 16px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.75);
-    }
-    .check{
-      flex: 0 0 auto;
-      width: 22px; height: 22px;
-      border-radius: 7px;
-      background: rgba(17,24,39,.07);
-      display:grid;
-      place-items:center;
-      font-weight: 1000;
-      color: #0f172a;
-    }
-    .li p{
-      margin:0;
-      color: rgba(16,17,20,.86);
-      line-height: 1.55;
-      font-size: 15px;
-    }
-
-    .section{
-      margin: 18px 0 0;
-      padding-top: 6px;
-    }
-
-    h2{
-      margin: 18px 0 10px;
-      font-size: 20px;
-      line-height: 1.2;
-      letter-spacing:-.2px;
-      font-weight: 1000;
-    }
-
-    .text p{
-      margin: 10px 0;
-      font-size: 15px;
-      line-height: 1.72;
-      color: rgba(16,17,20,.86);
-    }
-
-    .quote{
-      margin: 14px 0 6px;
-      padding: 14px 14px;
-      border-radius: 16px;
-      border:1px solid var(--line);
-      background: rgba(17,24,39,.04);
-      font-weight: 900;
-      color: rgba(16,17,20,.92);
-    }
-
-    .miniNote{
-      margin: 14px 0 0;
-      padding: 14px 14px;
-      border-radius: 16px;
-      border:1px dashed rgba(16,17,20,.18);
-      background: rgba(255,255,255,.65);
-      color: rgba(16,17,20,.72);
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
-    .cta{
-      margin-top: 18px;
-      display:flex;
-      gap:12px;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      padding: 14px;
-      border-radius: 18px;
-      border:1px solid var(--line);
-      background: rgba(252,216,2,.10);
-    }
-
-    .ctaText{
-      min-width: 240px;
-    }
-    .ctaText .t1{
-      font-weight: 1000;
-      margin:0 0 4px;
-    }
-    .ctaText .t2{
-      margin:0;
-      color: rgba(16,17,20,.72);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      text-decoration:none;
-      cursor:pointer;
-      border:0;
-      padding: 14px 18px;
-      border-radius: 999px;
-      font-weight: 1000;
-      color:#000;
-      background: var(--accent);
-      box-shadow: 0 14px 30px rgba(252,216,2,.22);
-      transition: transform .12s ease, filter .12s ease;
+    * {
+      box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
-      white-space:nowrap;
-    }
-    .btn:active{ transform: translateY(1px) scale(.995); filter: brightness(.98); }
-
-    .sticky{
-      position:fixed;
-      left:0; right:0;
-      bottom:0;
-      padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
-      background: linear-gradient(180deg, rgba(250,250,251,0), rgba(250,250,251,.80), rgba(250,250,251,.96));
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      display:flex;
-      justify-content:center;
-      z-index:999;
-      border-top: 1px solid rgba(16,17,20,.08);
-    }
-    .stickyInner{
-      width:min(var(--container), 96vw);
-      display:flex;
-      justify-content:flex-end;
     }
 
-    .fine{
-      margin-top: 14px;
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 50% -10%, rgba(95, 54, 255, 0.38), transparent 34%),
+        radial-gradient(circle at 0% 30%, rgba(255, 54, 122, 0.16), transparent 38%),
+        radial-gradient(circle at 100% 70%, rgba(40, 168, 255, 0.13), transparent 34%),
+        var(--bg);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+    }
+
+    .page {
+      position: relative;
+      width: min(100%, 520px);
+      margin: 0 auto;
+      padding: 18px 14px 28px;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .stat {
+      min-height: 54px;
+      padding: 10px 12px;
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.055);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .online-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin-right: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 16px var(--green);
+      vertical-align: 1px;
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(0.72); opacity: 0.58; }
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 8px 0 16px;
+      padding: 0 2px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 26px;
+      letter-spacing: -0.055em;
+      line-height: 1.08;
+    }
+
+    .hero p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .info-btn,
+    .timer {
+      height: 38px;
+      border: 1px solid var(--stroke-strong);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+      color: #fff;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.20);
+    }
+
+    .info-btn {
+      width: 38px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .timer {
+      display: grid;
+      place-items: center;
+      min-width: 76px;
+      padding: 0 14px;
+      font-size: 14px;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .game-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 258px;
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, var(--card-2), var(--card));
+      box-shadow: var(--shadow);
+      isolation: isolate;
+      transform: translateZ(0);
+    }
+
+    .game-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.07), transparent 48%, rgba(0, 0, 0, 0.24));
+      z-index: 2;
+    }
+
+    .media {
+      position: relative;
+      height: 172px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.01);
+    }
+
+    .badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 5;
+      padding: 6px 9px;
+      border-radius: 999px;
+      color: #101010;
       font-size: 11px;
-      color: rgba(16,17,20,.50);
-      line-height: 1.35;
-      text-align:center;
+      line-height: 1;
+      font-weight: 1000;
+      letter-spacing: 0.02em;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+    }
+
+    .badge.hot { background: linear-gradient(135deg, #ffdf65, #ff4867); color: #fff; }
+    .badge.new { background: linear-gradient(135deg, #7dffb1, #20d2ff); color: #072116; }
+    .badge.vip { background: linear-gradient(135deg, #ffd15a, #b06cff); color: #fff; }
+    .badge.top { background: linear-gradient(135deg, #ffffff, #76a9ff); color: #09111f; }
+
+    .content {
+      position: relative;
+      z-index: 4;
+      padding: 10px 12px 12px;
+    }
+
+    .content h2 {
+      margin: 0 0 8px;
+      min-height: 20px;
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      text-transform: uppercase;
+    }
+
+    .play-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      min-height: 39px;
+      border: 0;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #ff325d, #ff7a2f);
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 1000;
+      box-shadow: 0 14px 32px rgba(255, 69, 55, 0.28);
+      cursor: pointer;
+      transition: transform 0.16s ease, filter 0.16s ease;
+    }
+
+    .play-btn:active {
+      transform: scale(0.97);
+      filter: brightness(0.94);
+    }
+
+    .play-btn.secondary {
+      background: linear-gradient(135deg, #5868ff, #b06cff);
+      box-shadow: 0 14px 32px rgba(104, 88, 255, 0.26);
+    }
+
+    .ticker {
+      display: none;
+    }
+
+    .win-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      z-index: 40;
+      width: min(calc(100% - 28px), 430px);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 13px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 18px;
+      background: rgba(11, 16, 31, 0.92);
+      box-shadow: 0 18px 58px rgba(0, 0, 0, 0.46);
+      backdrop-filter: blur(18px);
+      transform: translate(-50%, 120px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.42s ease, opacity 0.42s ease;
+    }
+
+    .win-toast.is-visible {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+
+    .flag {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.10);
+      font-size: 21px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.13);
+    }
+
+    .win-text {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .win-title {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 1000;
+      line-height: 1.15;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .win-title b {
+      color: var(--yellow);
+    }
+
+    .win-subtitle {
+      margin-top: 3px;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 11px;
+      font-weight: 750;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .win-amount {
+      flex: 0 0 auto;
+      padding: 7px 9px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(82, 255, 154, 0.22), rgba(255, 209, 90, 0.14));
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 1000;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(0, 0, 0, 0.62);
+      backdrop-filter: blur(10px);
+    }
+
+    .modal.is-open {
+      display: flex;
+    }
+
+    .modal-card {
+      width: min(100%, 420px);
+      position: relative;
+      padding: 22px 18px 18px;
+      border: 1px solid var(--stroke-strong);
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 63, 100, 0.18), transparent 38%),
+        #101522;
+      box-shadow: 0 28px 100px rgba(0, 0, 0, 0.55);
+    }
+
+    .close {
+      position: absolute;
+      top: 11px;
+      right: 12px;
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .modal-card h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      letter-spacing: -0.04em;
+    }
+
+    .modal-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 650;
+    }
+
+    @media (max-width: 380px) {
+      .page { padding-inline: 10px; }
+      .grid { gap: 10px; }
+      .game-card { min-height: 240px; border-radius: 22px; }
+      .media { height: 158px; }
+      .content { padding: 9px 10px 11px; }
+      .content h2 { font-size: 13px; min-height: 18px; margin-bottom: 7px; }
+      .play-btn { font-size: 12px; min-height: 36px; }
+      .hero h1 { font-size: 23px; }
     }
   </style>
 </head>
 
 <body>
-  <main class="wrap">
-    <div class="page">
-
-      <div class="top">
-        <div class="pill"><span class="dot"></span> У тебя все получится!</div>
-        <div class="pill">📌 «Принципы денег»</div>
+  <main class="page">
+    <section class="topbar" aria-label="Статистика">
+      <div class="stat">
+        <strong><i class="online-dot"></i><span id="onlineCount">2845</span> чел.</strong>
+        <span>сейчас играют</span>
       </div>
+      <div class="stat">
+        <strong>+<span id="winCount">123</span> чел.</strong>
+        <span>активны за последний час</span>
+      </div>
+    </section>
 
-      <article class="card" role="region" aria-label="Принципы денег">
-        <header class="hero">
-          <div class="heroInner">
-            <h1>ПРИНЦИПЫ ДЕНЕГ</h1>
-            <p class="lead">
-              Почему к одним людям деньги приходят легко и стабильно, а другие годами качаются на качелях, когда деньги то есть, то нет?
-            </p>
-          </div>
-        </header>
+    <section class="hero">
+      <div>
+        <h1>Популярные игры</h1>
+        <p>Выбери игру и начни прямо сейчас</p>
+      </div>
+      <div class="hero-actions">
+        <button class="info-btn" type="button" aria-label="Как начать" id="openModal">?</button>
+        <div class="timer" id="timer">03:00</div>
+      </div>
+    </section>
 
-        <hr class="divider" />
-
-        <section class="content">
-
-          <div class="text">
-            <p><b>Почему к одним деньги приходят, а к другим нет?</b></p>
-          </div>
-
-          <ul class="list">
-            <li class="li">
-              <div class="check">✔️</div>
-              <p>Деньги это не результат вашей проявленности. Вы можете быть известным, но без денег</p>
-            </li>
-            <li class="li">
-              <div class="check">✔️</div>
-              <p>Деньги не результат вашей энергии. Вы можете быть прокаченным йогом и все чакры у вас будут светиться ярким огнем. Но денег не будет</p>
-            </li>
-            <li class="li">
-              <div class="check">✔️</div>
-              <p>Деньги не результат ценности, которую вы несете. Вы можете быть врачом и спасать самое ценное, жизнь, и при этом быть без денег</p>
-            </li>
-            <li class="li">
-              <div class="check">✔️</div>
-              <p>Деньги не результат вашего ума, иначе самыми богатыми были бы профессоры и ученые. А это не так</p>
-            </li>
-            <li class="li">
-              <div class="check">✔️</div>
-              <p>Деньги не результат вашего тяжелого труда. Иначе самыми богатыми были бы грузчики или шахтеры</p>
-            </li>
-            <li class="li">
-              <div class="check">✔️</div>
-              <p>Деньги это не результат того, насколько опасна ваша работа. Тогда самыми богатыми были бы солдаты</p>
-            </li>
-          </ul>
-
-          <div class="text">
-            <p>Вы можете быть очень хорошим человеком, и всем рядом с вами будет хорошо. Но платить вам не будут</p>
-            <p>Зато буд ут платить тем, кого хорошим не назвать. Они не занимаются практиками, не ходят в терапию, не жалеют животных и пьют алкоголь, но деньги у них есть</p>
-            <p>Они могут иметь любовниц, могут совершать и продавать то, что вредит людям, могут плевать на чужие интересы, но деньги у них будут</p>
-            <p>Получается, что есть хорошие люди с деньгами и без них, а есть плохие с деньгами и без них. Тогда в чем причина денег?</p>
-            <p>Почему к одному хорошему человеку они идут, а к другому нет? И почему деньги есть у людей, которых хорошими сложно назвать?</p>
-            <p><b>Дело в том, что все перечисленное вообще не имеет никакого отношения к деньгам.</b></p>
-            <p>У денег нет морали. Они не выбирают хороших или плохих.</p>
-            <p>Они работают по другим принципам. И сейчас вы узнаете эти принципы</p>
-          </div>
-
-          <!-- Принцип 1 -->
-          <div class="section">
-            <h2>Принцип денег 1.</h2>
-            <div class="text">
-              <p>В детстве мы получали безопасность от родителей. И наша безопасность зависела не от наших действий и результатов, а от настроения взрослых</p>
-              <p>Ощущение безопасности связалось в мозгу с настроением и одобрением со стороны значимых людей. Будь хорошим и тебе можно будет жить</p>
-              <p>Во взрослой жизни у нас произошел перенос с родителей на деньги.</p>
-              <p>И мы воспринимаем деньги, как обратную связь от мира на то, можно ли нам жить</p>
-              <p>Поэтому, когда у нас возникают проблемы с деньгами, мы чувствуем беспокойство.</p>
-              <p>Мозг может беспокоиться только о безопасности.</p>
-              <p>Поэтому, если мы чувствуем беспокойство из-за денег, на самом деле мы чувствуем угрозу, чувствуем, что мир не принимает нас</p>
-              <p>На самом деле деньги не являются разрешением или запретом на жизнь.</p>
-              <p>Есть у вас деньги или нет, если вы живы, значит вам можно жить</p>
-              <p>Деньги не являются источником вашей базовой безопасности. Источник вашей безопасности находится внутри вас</p>
-            </div>
-            <div class="quote">Первый принцип денег: "Деньги - это инструмент для реализации своих целей. И не более того"</div>
-          </div>
-
-          <!-- Принцип 2 -->
-          <div class="section">
-            <h2>Принцип денег 2</h2>
-            <div class="text">
-              <p>Когда у вас произошел перенос со взрослых на деньги, вы начали вести себя по отношению к деньгам так, как будто пытаетесь им понравится.</p>
-              <p>А когда это не срабатывает, вы можете на них обижаться</p>
-              <p>Т.е. вы относитесь к деньгам, как к живому организму, наделенного сознанием.</p>
-              <p>И пытаетесь договориться с этим организмом, как когда-то договаривались со значимыми взрослыми</p>
-            </div>
-            <div class="quote">Второй принцип денег: "Деньги не обладают сознанием. У денег нет эмоций. У них нет морали. Им все равно, что вы чувствуете"</div>
-          </div>
-
-          <!-- Принцип 3 -->
-          <div class="section">
-            <h2>Принцип денег 3</h2>
-            <div class="text">
-              <p>Деньги не существуют сами по себе. Они не решают к кому прийти, а от кого уйти</p>
-              <p>Деньги приходят от людей. И именно люди решают, заплатить деньги вам, или отдать их другому человеку</p>
-            </div>
-            <div class="quote">Третий принцип денег: "Деньги не существуют сами по себе. Деньги приходят от людей. Именно люди решают, кому платить, а кому нет"</div>
-          </div>
-
-          <!-- Принцип 4 -->
-          <div class="section">
-            <h2>Принцип денег 4</h2>
-            <div class="text">
-              <p>Чтобы люди нам заплатили, мы стараемся показаться хорошими. Мы стараемся понравится человеку</p>
-              <p>В детстве, если мы кому-то понравились, нам могли купить игрушку или вкусняшку</p>
-              <p>Поэтому теперь мы также пытаемся понравиться людям, чтобы они нас одобрили и дали нам денег</p>
-              <p>Вы стараетесь показать, какой вы крутой мастер, какой классный эксперт. Показываете свои кейсы и дипломы</p>
-              <p>Вы стараетесь сразу сделать человеку хорошо, чтобы он понял, что с вами ему будет прекрасно и захотел идти с вами дальше</p>
-              <p>Но люди не будут вам платить за то, что вы им понравились, или за то, что вы крутой. Максимум, они вам лайк в инсте поставят. Но отдавать вам свои деньги не станут</p>
-            </div>
-            <div class="quote">Четвертый принцип денег: "Люди платят не за то, какой вы. Они платят за то, что хотят получить"</div>
-            <div class="miniNote">Это один из ключевых принципов. И если вы осознаете только его, вы уже сможете сильно продвинуться в деньгах</div>
-          </div>
-
-          <!-- Принцип 5 -->
-          <div class="section">
-            <h2>Принцип денег 5</h2>
-            <div class="text">
-              <p>Т.к. деньги приходят от людей, то ваши отношения с деньгами напрямую отражают ваши отношения с людьми, миром и самим собой</p>
-              <p>От того, как вы относитесь к миру, будут зависеть ваши отношения с деньгами</p>
-              <p>Если вы привыкли к борьбе, то это борьба перенесется на деньги. Вам придется за них бороться</p>
-              <p>Но не бывает воинов, не знающих поражений. Поэтому и вы будете постоянно то побеждать, то проигрывать</p>
-              <p>Это порождает денежные качели и беспокойство из-за денег. Потому что вы потенциально понимаете, что можете проиграть в очередной битве</p>
-            </div>
-            <div class="quote">Пятый принцип денег: "Отношение с деньгами показывает ваши отношения с миром Деньги не меняют вашего состояния. Они поддерживают текущее состояние. Если вы привыкли бороться или доказывать что-то, деньги будут приходить через борьбу"</div>
-          </div>
-
-          <!-- Принцип 6 -->
-          <div class="section">
-            <h2>Принцип денег 6</h2>
-            <div class="text">
-              <p>Деньги имеют зеркальное свойство. Они отражают ваши ожидания, причем работают в обе стороны</p>
-              <p>Если вы считаете, что вам кто-то что-то должен и обижаетесь, когда не получаете этого, зеркало сработает так, что вы тоже окажетесь в долгах</p>
-            </div>
-            <div class="quote">Шестой принцип денег: "Долженствование - это зерно, прорастающее в обе стороны. Считаешь, что тебе должны или обязаны, сам будешь должен"</div>
-          </div>
-
-          <!-- Принцип 7 -->
-          <div class="section">
-            <h2>Принцип денег 7</h2>
-            <div class="text">
-              <p>Представьте, что вам 7 лет и вы пришли играть на новую детскую площадку, где уже играют незнакомые вам дети</p>
-              <p>Вам нужно будет влиться к ним в игру. Что вы будете чувствовать? Неуверенность, стеснение? А вдруг они меня не примут?</p>
-              <p>Эти ощущения сейчас отражают ваши отношения с деньгами. Вы сами стесняетесь предложить людям то, что они хотят</p>
-            </div>
-            <div class="quote">Седьмой принцип денег: "Отношения с деньгами отражают то, как вы себя чувствуете среди людей"</div>
-          </div>
-
-          <!-- Принцип 8 -->
-          <div class="section">
-            <h2>Принцип денег 8</h2>
-            <div class="text">
-              <p>Когда у вас недостаточно денег, вы фокусируетесь именно на этом. Ваш мозг научается решать эту проблему</p>
-              <p>Когда проблема решена, мозгу некуда направить внимание. Поэтому он начинает создавать ситуации, в которых проблема повторяется</p>
-              <p>Есть хорошая поговорка - "Кем ты будешь, если у тебя забрать все твои проблемы?"</p>
-              <p>И если вы не видите целей, которые лежат ЗА вашими текущими проблемами, вы так и будете ходить по кругу</p>
-            </div>
-            <div class="quote">Восьмой принцип денег: "Деньги приходят только под реализацию конкретного намерения и состояния. Какое намерение и состояние, такие и отношения с деньгами"</div>
-          </div>
-
-          <!-- Принцип 9 -->
-          <div class="section">
-            <h2>Принцип денег 9</h2>
-            <div class="text">
-              <p>Если мы посмотрим, как человек обращается со своим вниманием и временем, мы всегда сможем сказать, какие у него отношения с деньгами</p>
-              <p>Внимание и время - наши главные ресурсы. И если человек не может правильно обращаться с главными ресурсами, с деньгами он тоже отношения не выстроит</p>
-              <p>Потому что деньги являются эквивалентом того времени, которое мы экономим людям</p>
-              <p>Человек может вырастить салат у себя дома, но это долго. Поэтому он покупает салат в магазине. Салат - это конечный продукт. И продавцу человек платит за то, что тот уже потратил свое время на создание этого продукта</p>
-            </div>
-            <div class="quote">Девятый принцип денег: "Деньги - это инструмент, обращение с которым, отражает то, как человек обращается со своим времен и вниманием. Хочешь порядка в деньгах, начни управлять своим временем и вниманием"</div>
-          </div>
-
-          <!-- Финальные абзацы -->
-          <div class="section">
-            <div class="text">
-              <p>Как вы поняли, ваши отношения с деньгами, это не только результат вашего маркетинга или каких-то инструментов</p>
-              <p>И уж точно не то, что у вас не проработаны родители, вы не на своем месте в системе, или у вас чакры забились</p>
-              <p>Причиной денег также НЕ является работа. Причина денег и отношений с ними являются ваши программы взаимодействия с людьми и миром</p>
-              <p>Причиной является то, как вы видите себя среди людей. Что вы думаете о людях и о себе самом</p>
-              <p>И если вы хотите изменить свои отношения с деньгами, нужно менять базовые принципы взаимодействия с миром</p>
-              <p>Для этого вам НЕ понадобятся годы терапий и проработок. Вам не нужно принимать маму и папу, часами медитировать или искать свое предназначение</p>
-              <p>С вами все в порядке. Вы уже на своем пути. И сейчас нужно только скорректировать паттерны, по которым работает ваш мозг</p>
-              <p>А для этого вам потребуется всего 2 недели. Именно столько нужно мозгу для формирования новых нейронных систем, которые и определяют отношение с миром и деньгами</p>
-              <p>Для этого нужно последовательно внедрить определенные чит-коды, которые изменят текущие программы мозга и приведут вас к новым результатам в деньгах</p>
-              <p>Я пока не видел человека, который применил эти чит-коды и не вырос в своей реализации и финансах</p>
-              <p>Поэтому, если хотите остановить денежные качели и начать стабильно расти в реализации и деньгах, жмите на кнопку и забирайте чит-коды</p>
-            </div>
-
-            <div class="cta">
-              <div class="ctaText">
-                <p class="t1">Готов(а) забрать чит-коды?</p>
-              </div>
-              <a class="btn" id="ctaBtn" href="#" data-next="1">Получить чит-коды денег</a>
-            </div>
-
-          
-
-        </section>
+    <section class="grid" aria-label="Список игр">
+      <article class="game-card">
+        <span class="badge hot">HOT</span>
+        <div class="media">
+          <img src="assets/game-1.gif" alt="AVIAMASTERS 2" loading="eager" decoding="async" />
+        </div>
+        <div class="content">
+          <h2>AVIAMASTERS 2</h2>
+          <a class="play-btn" href="https://lb333.me/0Z8t7o" rel="nofollow noopener noreferrer">▶ Играть</a>
+        </div>
       </article>
 
-    </div>
+      <article class="game-card">
+        <span class="badge new">NEW</span>
+        <div class="media">
+          <img src="assets/game-2.gif" alt="TOWER RUSH" loading="lazy" decoding="async" />
+        </div>
+        <div class="content">
+          <h2>TOWER RUSH</h2>
+          <a class="play-btn" href="https://lb333.me/0Z8t7o" rel="nofollow noopener noreferrer">▶ Играть</a>
+        </div>
+      </article>
+
+      <article class="game-card">
+        <span class="badge vip">VIP</span>
+        <div class="media">
+          <img src="assets/game-3.gif" alt="TAPPY BIRD" loading="lazy" decoding="async" />
+        </div>
+        <div class="content">
+          <h2>TAPPY BIRD</h2>
+          <a class="play-btn" href="https://lb333.me/0Z8t7o" rel="nofollow noopener noreferrer">▶ Играть</a>
+        </div>
+      </article>
+
+      <article class="game-card">
+        <span class="badge top">TOP</span>
+        <div class="media">
+          <img src="assets/game-4.gif" alt="MINES" loading="lazy" decoding="async" />
+        </div>
+        <div class="content">
+          <h2>MINES</h2>
+          <a class="play-btn" href="https://lb333.me/0Z8t7o" rel="nofollow noopener noreferrer">▶ Играть</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="ticker" id="ticker" aria-live="polite"></section>
   </main>
 
-  <div class="sticky" aria-label="Sticky CTA">
-    <div class="stickyInner">
-      <a class="btn" id="stickyBtn" href="#" data-next="1">Получить чит-коды денег</a>
+  <aside class="win-toast" id="winToast" aria-live="polite">
+    <div class="flag">🎮</div>
+    <div class="win-text">
+      <div class="win-title"><span id="toastId">ID: min***</span> только что <b>зашёл в игру</b></div>
+      <div class="win-subtitle" id="toastGame">AVIAMASTERS 2 · сейчас онлайн</div>
+    </div>
+    <div class="win-amount" id="toastAmount">онлайн</div>
+  </aside>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+    <div class="modal-card">
+      <button class="close" type="button" id="closeModal" aria-label="Закрыть">×</button>
+      <h3 id="infoTitle">Как начать</h3>
+      <p>Выбери игру из списка и нажми кнопку. Если страница не открылась сразу, попробуй открыть её во внешнем браузере.</p>
     </div>
   </div>
 
   <script>
-    // =========================
-    // КУДА ВЕДЁТ КНОПКА
-    // =========================
-    // 1) Вторая страница в той же папке:
-    const NEXT_URL = "./next.html";
+    const CONFIG = {
+      onlineMin: 2360,
+      onlineMax: 3920,
+      onlineStart: 2845,
+      winsMin: 98,
+      winsMax: 178,
+      winsStart: 123,
+      countdownSeconds: 180,
+      activityItems: [
+        { id: "min***", game: "AVIAMASTERS 2", status: "онлайн" },
+        { id: "den***", game: "TOWER RUSH", status: "онлайн" },
+        { id: "art***", game: "TAPPY BIRD", status: "онлайн" },
+        { id: "max***", game: "MINES", status: "онлайн" },
+        { id: "leo***", game: "AVIAMASTERS 2", status: "онлайн" }
+      ]
+    };
 
-    // 2) Или внешний URL:
-    // const NEXT_URL = "https://example.com/next";
+    const $ = (selector) => document.querySelector(selector);
 
-    // Собираем финальную ссылку так, чтобы:
-    // - относительные пути работали в GitHub Pages и локально
-    // - query-параметры (utm, fbclid и т.д.) переносились на next.html
-    function buildUrl(base){
-      const u = new URL(base, window.location.href);
-      const qs = new URLSearchParams(window.location.search);
-      for (const [k,v] of qs.entries()){
-        if (!u.searchParams.has(k)) u.searchParams.set(k, v);
-      }
-      return u.toString();
+    const onlineCount = $("#onlineCount");
+    const winCount = $("#winCount");
+    const timer = $("#timer");
+    const winToast = $("#winToast");
+    const toastId = $("#toastId");
+    const toastGame = $("#toastGame");
+    const toastAmount = $("#toastAmount");
+    const modal = $("#modal");
+
+    let currentOnline = CONFIG.onlineStart;
+    let currentWins = CONFIG.winsStart;
+    let secondsLeft = CONFIG.countdownSeconds;
+    let tickerIndex = 0;
+    let toastTimer = null;
+
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
     }
 
-    const finalUrl = buildUrl(NEXT_URL);
-    document.getElementById("ctaBtn").href = finalUrl;
-    document.getElementById("stickyBtn").href = finalUrl;
+    function randomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function updateStats() {
+      currentOnline = clamp(currentOnline + randomInt(-17, 24), CONFIG.onlineMin, CONFIG.onlineMax);
+      currentWins = clamp(currentWins + randomInt(-2, 4), CONFIG.winsMin, CONFIG.winsMax);
+
+      onlineCount.textContent = currentOnline.toLocaleString("ru-RU");
+      winCount.textContent = currentWins.toLocaleString("ru-RU");
+    }
+
+    function updateTimer() {
+      const minutes = Math.floor(secondsLeft / 60).toString().padStart(2, "0");
+      const seconds = (secondsLeft % 60).toString().padStart(2, "0");
+
+      timer.textContent = `${minutes}:${seconds}`;
+
+      secondsLeft -= 1;
+      if (secondsLeft < 0) secondsLeft = CONFIG.countdownSeconds;
+    }
+
+    function showWinToast() {
+      const item = CONFIG.activityItems[tickerIndex % CONFIG.activityItems.length];
+      tickerIndex += 1;
+
+      toastId.textContent = `ID: ${item.id}`;
+      toastGame.textContent = `${item.game} · только что`;
+      toastAmount.textContent = item.status;
+
+      winToast.classList.add("is-visible");
+
+      window.clearTimeout(toastTimer);
+      toastTimer = window.setTimeout(() => {
+        winToast.classList.remove("is-visible");
+      }, 4200);
+    }
+
+    function scheduleWinToast() {
+      const delay = randomInt(6800, 11800);
+
+      window.setTimeout(() => {
+        showWinToast();
+        scheduleWinToast();
+      }, delay);
+    }
+
+    $("#openModal").addEventListener("click", () => modal.classList.add("is-open"));
+    $("#closeModal").addEventListener("click", () => modal.classList.remove("is-open"));
+
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) modal.classList.remove("is-open");
+    });
+
+    updateStats();
+    updateTimer();
+    scheduleWinToast();
+
+    setInterval(updateStats, 1900);
+    setInterval(updateTimer, 1000);
   </script>
 </body>
 </html>
